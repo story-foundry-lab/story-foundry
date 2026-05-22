@@ -1,0 +1,21 @@
+id: song-of-blaze
+title: 炽炎的颂歌
+type: original-longform
+status: active
+priority: primary
+language: zh-CN
+visibility: public
+stage: drafting
+source:
+  migrated_from: novel-fiction/packages/炽炎的颂歌
+  migrated_on: 2026-05-23
+paths:
+  drafts: drafts/chapters
+  canon: canon/worlds
+  plan: plan/outline
+  style: style/writing-style
+  fragments: fragments/sparks
+  legacy: legacy/tieba-original
+policy:
+  third_party_full_text: do-not-commit
+  ai_usage: assisted-generation-review-and-maintenance

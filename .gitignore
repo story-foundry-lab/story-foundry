@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+.DS_Store
+Thumbs.db
+
+*.zip
+*.7z
+*.rar
+
+# Public-repo hygiene: keep full third-party source corpora local.
+**/原文/
+**/raw/
+
+# Generated publication artifacts can be rebuilt.
+exports/*
+!exports/README.md

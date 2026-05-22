@@ -1,0 +1,19 @@
+id: madoka-fanfic
+title: 魔法少女小圆同人
+type: fanfic-incubator
+status: incubating
+priority: secondary
+language: zh-CN
+visibility: public
+stage: fragments-to-outline
+source:
+  migrated_from: novel-fiction/packages/魔法少女小圆同人
+  migrated_on: 2026-05-23
+paths:
+  drafts: drafts/chapters
+  canon: canon/setting
+  fragments: fragments/sparks
+policy:
+  fan_work: true
+  third_party_full_text: do-not-commit
+  public_release_review: required

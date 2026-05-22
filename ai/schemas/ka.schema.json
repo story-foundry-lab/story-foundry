@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Story Foundry KA Metadata",
+  "type": "object",
+  "required": ["id", "title", "type", "status", "language", "paths"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private", "mixed"]
+    },
+    "stage": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "paths": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "policy": {
+      "type": "object"
+    }
+  }
+}
