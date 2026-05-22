@@ -1,3 +1,4 @@
+protocol_version: story-foundry-agent-v1
 id: song-of-blaze
 title: 炽炎的颂歌
 type: original-longform
@@ -9,7 +10,20 @@ stage: drafting
 source:
   migrated_from: novel-fiction/packages/炽炎的颂歌
   migrated_on: 2026-05-23
+agent_surface:
+  skill: .agents/skills/novel-fiction/SKILL.md
+  workflows:
+    - .agents/workflows/fiction-editing.md
+    - .agents/workflows/chapter-review.md
+    - .agents/workflows/canon-maintenance.md
+    - .agents/workflows/illustration.md
+  state: state/README.md
+  tasks: tasks/README.md
+  handoff: handoff/README.md
 paths:
+  state: state
+  tasks: tasks
+  handoff: handoff
   drafts: drafts/chapters
   canon: canon/worlds
   plan: plan/outline

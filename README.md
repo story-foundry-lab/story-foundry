@@ -14,9 +14,13 @@
 ```text
 story-foundry/
 ├── AGENTS.md
+├── WORKFLOW.md         # agent 运行契约和完成定义
 ├── README.md
+├── .agents/            # agent 操作规程
+│   ├── skills/         # agent skills，写作协作规范唯一权威来源
+│   ├── protocols/      # 仓库协议、作品生命周期、public hygiene
+│   └── workflows/      # 章节审读、正文编辑、设定维护等可执行流程
 ├── ai/
-│   ├── skills/          # 写作协作规范、审读清单、维护规则
 │   ├── prompts/         # 可复用提示词
 │   ├── schemas/         # KA 元数据 schema
 │   └── evals/           # 跨作品评估方法
@@ -32,6 +36,9 @@ story-foundry/
 ```text
 README.md
 ka.yaml
+state/       # 当前状态、下一步、阻塞项
+tasks/       # 可领取任务索引
+handoff/     # 跨会话交接记录
 drafts/       # 正文草稿
 canon/        # 正式设定源
 plan/         # 大纲、章节计划
@@ -54,4 +61,5 @@ legacy/       # 旧稿和迁移前版本
 ```powershell
 python scripts/check-structure.py
 python scripts/check-names.py --work song-of-blaze
+rg -n 'ai[/\\]skills' -S .
 ```

@@ -20,6 +20,9 @@
 | 角色卡 | `canon/worlds/树藤世界/角色/` |
 | 文风规范 | `style/writing-style/README.md` |
 | 灵感碎片 | `fragments/sparks/` |
+| 当前状态 | `state/README.md` |
+| 任务索引 | `tasks/README.md` |
+| 跨会话交接 | `handoff/README.md` |
 | 最早期版本 | `legacy/tieba-original/` |
 
 ## 设定优先级

@@ -10,7 +10,7 @@ import sys
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
-NAME_MAP_PATH = REPO_ROOT / "ai" / "skills" / "novel-fiction" / "references" / "name-map.md"
+NAME_MAP_PATH = REPO_ROOT / ".agents" / "skills" / "novel-fiction" / "references" / "name-map.md"
 WORKS_DIR = REPO_ROOT / "works"
 
 

@@ -1,3 +1,4 @@
+protocol_version: story-foundry-agent-v1
 id: madoka-fanfic
 title: 魔法少女小圆同人
 type: fanfic-incubator
@@ -9,7 +10,19 @@ stage: fragments-to-outline
 source:
   migrated_from: novel-fiction/packages/魔法少女小圆同人
   migrated_on: 2026-05-23
+agent_surface:
+  skill: .agents/skills/novel-fiction/SKILL.md
+  workflows:
+    - .agents/workflows/fiction-editing.md
+    - .agents/workflows/chapter-review.md
+    - .agents/workflows/canon-maintenance.md
+  state: state/README.md
+  tasks: tasks/README.md
+  handoff: handoff/README.md
 paths:
+  state: state
+  tasks: tasks
+  handoff: handoff
   drafts: drafts/chapters
   canon: canon/setting
   fragments: fragments/sparks

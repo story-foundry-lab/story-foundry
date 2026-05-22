@@ -8,6 +8,7 @@ __pycache__/
 
 .DS_Store
 Thumbs.db
+.superpowers/
 
 *.zip
 *.7z

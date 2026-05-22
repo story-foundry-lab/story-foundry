@@ -1,6 +1,6 @@
 # Skill 压力测试
 
-用于维护 `ai/skills/novel-fiction/SKILL.md` 时做回归，不是日常任务必读。
+用于维护 `.agents/skills/novel-fiction/SKILL.md` 时做回归，不是日常任务必读。
 
 ## 使用流程
 
