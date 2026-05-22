@@ -9,6 +9,9 @@
 | 正文草稿 | `drafts/chapters/` |
 | 设定 | `canon/setting/` |
 | 灵感碎片 | `fragments/sparks/` |
+| 当前状态 | `state/README.md` |
+| 任务索引 | `tasks/README.md` |
+| 跨会话交接 | `handoff/README.md` |
 
 ## 公开仓库注意
 

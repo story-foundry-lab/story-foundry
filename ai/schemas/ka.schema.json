@@ -4,6 +4,9 @@
   "type": "object",
   "required": ["id", "title", "type", "status", "language", "paths"],
   "properties": {
+    "protocol_version": {
+      "type": "string"
+    },
     "id": {
       "type": "string",
       "pattern": "^[a-z0-9][a-z0-9-]*$"
@@ -33,6 +36,30 @@
     },
     "source": {
       "type": "object"
+    },
+    "agent_surface": {
+      "type": "object",
+      "properties": {
+        "skill": {
+          "type": "string"
+        },
+        "workflows": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "tasks": {
+          "type": "string"
+        },
+        "handoff": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
     },
     "paths": {
       "type": "object",

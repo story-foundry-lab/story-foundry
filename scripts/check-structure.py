@@ -10,11 +10,40 @@ import sys
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 WORKS_DIR = REPO_ROOT / "works"
 
-REQUIRED_ROOT_DIRS = ["ai", "works", "imports", "references", "archive", "scripts"]
+REQUIRED_ROOT_DIRS = [".agents", "ai", "works", "imports", "references", "archive", "scripts"]
+REQUIRED_ROOT_FILES = ["AGENTS.md", "WORKFLOW.md", "README.md"]
+FORBIDDEN_ROOT_DIRS = [("ai", "skills")]
+REQUIRED_AGENT_PATHS = [
+    ".agents/skills/novel-fiction/SKILL.md",
+    ".agents/skills/novel-fiction/references/name-map.md",
+    ".agents/protocols/repository.md",
+    ".agents/protocols/work-lifecycle.md",
+    ".agents/protocols/public-hygiene.md",
+    ".agents/protocols/fiction-ka.md",
+    ".agents/workflows/fiction-editing.md",
+    ".agents/workflows/canon-maintenance.md",
+    ".agents/workflows/chapter-review.md",
+    ".agents/workflows/illustration.md",
+]
 REQUIRED_WORK_FILES = ["README.md", "ka.yaml"]
+REQUIRED_COMMON_WORK_DIRS = ["state", "tasks", "handoff"]
 REQUIRED_WORK_DIRS = {
-    "song-of-blaze": ["drafts", "canon", "plan", "style", "fragments", "evals", "reviews", "legacy"],
-    "madoka-fanfic": ["drafts", "canon", "fragments", "evals", "reviews"],
+    "song-of-blaze": [
+        "state",
+        "tasks",
+        "handoff",
+        "drafts",
+        "canon",
+        "plan",
+        "style",
+        "fragments",
+        "evals",
+        "reviews",
+        "legacy",
+        "exports",
+        "notes",
+    ],
+    "madoka-fanfic": ["state", "tasks", "handoff", "drafts", "canon", "fragments", "evals", "reviews"],
 }
 FORBIDDEN_NAMES = {".DS_Store", "Thumbs.db"}
 FORBIDDEN_SUFFIXES = {".zip", ".7z", ".rar"}
@@ -34,6 +63,19 @@ def check() -> int:
         if not (REPO_ROOT / dirname).is_dir():
             issues.append(f"[MISSING] root directory: {dirname}/")
 
+    for filename in REQUIRED_ROOT_FILES:
+        if not (REPO_ROOT / filename).is_file():
+            issues.append(f"[MISSING] root file: {filename}")
+
+    for parts in FORBIDDEN_ROOT_DIRS:
+        forbidden_path = REPO_ROOT.joinpath(*parts)
+        if forbidden_path.exists():
+            issues.append(f"[FORBIDDEN] old agent skill location: {'/'.join(parts)}/")
+
+    for required_path in REQUIRED_AGENT_PATHS:
+        if not (REPO_ROOT / required_path).is_file():
+            issues.append(f"[MISSING] agent protocol file: {required_path}")
+
     if not WORKS_DIR.is_dir():
         issues.append("[MISSING] works/")
     else:
@@ -46,6 +88,11 @@ def check() -> int:
             for dirname in REQUIRED_WORK_DIRS.get(work_id, []):
                 if not (work_dir / dirname).is_dir():
                     issues.append(f"[MISSING] works/{work_id}/{dirname}/")
+
+            for dirname in REQUIRED_COMMON_WORK_DIRS:
+                readme = work_dir / dirname / "README.md"
+                if not readme.is_file():
+                    issues.append(f"[MISSING] works/{work_id}/{dirname}/README.md")
 
             for forbidden in FORBIDDEN_WORK_FILES:
                 if (work_dir / forbidden).exists():

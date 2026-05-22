@@ -7,8 +7,13 @@ Agent 总入口。按需展开，不要一次读完。
 ```text
 story-foundry/
 ├── AGENTS.md
+├── WORKFLOW.md                         # agent 运行契约
 ├── README.md
-├── ai/skills/novel-fiction/SKILL.md  # 写作规范唯一权威来源
+├── .agents/
+│   ├── skills/novel-fiction/SKILL.md   # 写作规范唯一权威来源
+│   ├── protocols/                      # 仓库协议
+│   └── workflows/                      # 可执行工作流
+├── ai/                                 # prompts、schemas、evals 等 AI 资产
 ├── works/
 │   ├── song-of-blaze/                # 默认项目：《炽炎的颂歌》
 │   └── madoka-fanfic/                # 同人孵化项目
@@ -20,10 +25,11 @@ story-foundry/
 
 ## 接到任务时
 
-1. 确认作品。默认 `works/song-of-blaze/`。
-2. 读取该作品 `README.md` 和 `ka.yaml`。
-3. 一切写作协作规范见 `ai/skills/novel-fiction/SKILL.md`。
-4. 不凭记忆判断设定，必须回到 `canon/`、`plan/`、`drafts/` 或用户本轮明确指令。
+1. 读取 `WORKFLOW.md`，确认本轮任务属于哪个 work。默认 `works/song-of-blaze/`。
+2. 读取该作品 `README.md`、`ka.yaml`、`state/README.md`。
+3. 一切写作协作规范见 `.agents/skills/novel-fiction/SKILL.md`。
+4. 按任务类型选读 `.agents/workflows/` 中的对应流程。
+5. 不凭记忆判断设定，必须回到 `canon/`、`plan/`、`drafts/`、`state/` 或用户本轮明确指令。
 
 ## Public 仓库注意事项
 
