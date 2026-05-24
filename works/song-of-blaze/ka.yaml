@@ -17,19 +17,23 @@ agent_surface:
     - .agents/workflows/chapter-review.md
     - .agents/workflows/canon-maintenance.md
     - .agents/workflows/illustration.md
-  state: state/README.md
-  tasks: tasks/README.md
-  handoff: handoff/README.md
+  state: 项目管理/当前状态/README.md
+  tasks: 项目管理/待办任务/README.md
+  handoff: 项目管理/交接记录/README.md
 paths:
-  state: state
-  tasks: tasks
-  handoff: handoff
-  drafts: drafts/chapters
-  canon: canon/worlds
-  plan: plan/outline
-  style: style/writing-style
-  fragments: fragments/sparks
-  legacy: legacy/tieba-original
+  state: 项目管理/当前状态
+  tasks: 项目管理/待办任务
+  handoff: 项目管理/交接记录
+  drafts: 正文草稿/章节
+  canon: 故事设定/世界
+  plan: 剧情大纲/分章大纲
+  style: 写作资料/文风参考
+  fragments: 写作资料/灵感片段
+  reviews: 审稿修订
+  notes: 写作资料/笔记
+  evals: 项目管理/质量验收
+  exports: 项目管理/导出稿件
+  legacy: 项目管理/旧稿存档/tieba-original
 policy:
   third_party_full_text: do-not-commit
   ai_usage: assisted-generation-review-and-maintenance

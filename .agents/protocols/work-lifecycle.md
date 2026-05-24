@@ -4,13 +4,13 @@
 
 ## Required Agent Surface
 
-- `state/README.md`: 当前进度、下一步、阻塞项、事实源优先级。
-- `tasks/README.md`: 可领取任务索引。
-- `handoff/README.md`: 跨会话交接规则和记录。
+- `ka.yaml` 的 `agent_surface.state`: 当前进度、下一步、阻塞项、事实源优先级。
+- `ka.yaml` 的 `agent_surface.tasks`: 可领取任务索引。
+- `ka.yaml` 的 `agent_surface.handoff`: 跨会话交接规则和记录。
 
 ## State Rules
 
-`state/` 只记录工作现场，不替代正式设定。设定事实必须沉淀到 `canon/`，章节计划必须沉淀到 `plan/`，正文必须沉淀到 `drafts/`。
+状态目录只记录工作现场，不替代正式设定。设定事实、章节计划和正文必须沉淀到 `ka.yaml.paths` 指向的正式资产目录。
 
 ## Handoff Rules
 

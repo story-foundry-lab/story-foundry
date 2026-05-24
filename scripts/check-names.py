@@ -41,7 +41,7 @@ def markdown_files(work: str | None) -> list[pathlib.Path]:
 
 def should_skip(path: pathlib.Path) -> bool:
     path_text = path.as_posix()
-    return any(part in path_text for part in ["/legacy/", "/原版", "/旧版/"]) or "name-map" in path.name
+    return any(part in path_text for part in ["/legacy/", "/旧稿存档/", "/原版", "/旧版/"]) or "name-map" in path.name
 
 
 def check(work: str | None = None) -> int:

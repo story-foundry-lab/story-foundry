@@ -8,7 +8,7 @@
 2. `WORKFLOW.md`
 3. `works/<work-id>/README.md`
 4. `works/<work-id>/ka.yaml`
-5. `works/<work-id>/state/README.md`
+5. `ka.yaml` 中 `agent_surface.state` 指向的状态文件
 6. `.agents/skills/novel-fiction/SKILL.md`
 
 ## Boundaries

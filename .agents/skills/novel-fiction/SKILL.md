@@ -24,7 +24,7 @@ description: |
 | "看下"、"评价"、"有没有问题"、"你觉得"、"先看方案"、"别直接改" | 先做 Test + Red，审读和判断，不改文件 |
 | "改一下"、"优化"、"润色"、"直接改"、"帮我改" | 读必要上下文后直接编辑 |
 | "审读"、"检查"、"合理吗"、"动机够吗" | 做写作 TDD；读取 `references/review-checklist.md`，必要时读取 `references/review-perspectives.md` |
-| "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `works/<work-id>/style/writing-style/README.md`，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
+| "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `works/<work-id>/写作资料/文风参考/README.md`，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
 | "续写"、"新写一段"、"补场景" | 做写作 TDD；读取角色卡、相关分幕大纲、必要设定；涉及文风时同时走文风路由 |
 | "同步设定"、"角色卡整理"、"世界观核对" | 读取正式设定源，检查是否需要跨文件同步 |
 | "改名"、"统一称呼"、"术语迁移"、"检查旧名" | 读取 `references/maintenance.md`，必要时使用 `references/name-map.md` 和 `scripts/check-names.py` |
@@ -59,11 +59,11 @@ description: |
 | 任务 | 必读文件 |
 |---|---|
 | 项目进度 | `works/<work-id>/README.md` + `works/<work-id>/ka.yaml` |
-| 角色判断 | `works/song-of-blaze/canon/worlds/树藤世界/角色/*.md` |
-| 聚落/地理 | `works/song-of-blaze/canon/worlds/树藤世界/聚落/*.md` |
-| 本章任务 | `works/song-of-blaze/plan/outline/分幕/*.md` |
-| 全书方向 | `works/song-of-blaze/plan/outline/总纲.md` |
-| 文风优化/润色/续写 | `works/<work-id>/style/writing-style/README.md` + `references/style-routing.md` |
+| 角色判断 | `works/song-of-blaze/故事设定/世界/树藤世界/角色/*.md` |
+| 聚落/地理 | `works/song-of-blaze/故事设定/世界/树藤世界/聚落/*.md` |
+| 本章任务 | `works/song-of-blaze/剧情大纲/分章大纲/分幕/*.md` |
+| 全书方向 | `works/song-of-blaze/剧情大纲/分章大纲/总纲.md` |
+| 文风优化/润色/续写 | `works/<work-id>/写作资料/文风参考/README.md` + `references/style-routing.md` |
 | 审读输出 | `references/review-checklist.md` |
 | 质量维度 | `references/review-dimensions.md` |
 | 三重审查 | `references/review-perspectives.md` |
@@ -93,7 +93,7 @@ Python 工具只做辅助判断和批量处理，由 agent 按任务需要自行
 
 ## 设定优先级
 
-角色卡 > 聚落/专项设定 > 分幕大纲 > 总纲 > sparks。
+角色卡 > 聚落/专项设定 > 分幕大纲 > 总纲 > 灵感片段。
 
 用户本轮明确纠正 > 以上所有。角色卡和正文冲突时，先指出冲突，再给修法。角色卡缺失时保守判断，不硬编。
 

@@ -27,21 +27,26 @@ REQUIRED_AGENT_PATHS = [
 ]
 REQUIRED_WORK_FILES = ["README.md", "ka.yaml"]
 REQUIRED_COMMON_WORK_DIRS = ["state", "tasks", "handoff"]
+REQUIRED_COMMON_WORK_READMES = {
+    "song-of-blaze": [
+        "项目管理/当前状态/README.md",
+        "项目管理/待办任务/README.md",
+        "项目管理/交接记录/README.md",
+    ],
+    "madoka-fanfic": [
+        "state/README.md",
+        "tasks/README.md",
+        "handoff/README.md",
+    ],
+}
 REQUIRED_WORK_DIRS = {
     "song-of-blaze": [
-        "state",
-        "tasks",
-        "handoff",
-        "drafts",
-        "canon",
-        "plan",
-        "style",
-        "fragments",
-        "evals",
-        "reviews",
-        "legacy",
-        "exports",
-        "notes",
+        "故事设定",
+        "剧情大纲",
+        "正文草稿",
+        "审稿修订",
+        "写作资料",
+        "项目管理",
     ],
     "madoka-fanfic": ["state", "tasks", "handoff", "drafts", "canon", "fragments", "evals", "reviews"],
 }
@@ -89,10 +94,14 @@ def check() -> int:
                 if not (work_dir / dirname).is_dir():
                     issues.append(f"[MISSING] works/{work_id}/{dirname}/")
 
-            for dirname in REQUIRED_COMMON_WORK_DIRS:
-                readme = work_dir / dirname / "README.md"
+            readme_paths = REQUIRED_COMMON_WORK_READMES.get(
+                work_id,
+                [f"{dirname}/README.md" for dirname in REQUIRED_COMMON_WORK_DIRS],
+            )
+            for readme_path in readme_paths:
+                readme = work_dir / readme_path
                 if not readme.is_file():
-                    issues.append(f"[MISSING] works/{work_id}/{dirname}/README.md")
+                    issues.append(f"[MISSING] works/{work_id}/{readme_path}")
 
             for forbidden in FORBIDDEN_WORK_FILES:
                 if (work_dir / forbidden).exists():

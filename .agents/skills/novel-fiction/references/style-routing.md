@@ -5,7 +5,7 @@
 先读：
 
 ```text
-works/<work-id>/style/writing-style/README.md
+works/<work-id>/写作资料/文风参考/README.md
 ```
 
 再按任务选读 1-2 个对应文件，不要一次性全读。

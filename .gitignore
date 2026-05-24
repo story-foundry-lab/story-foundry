@@ -9,6 +9,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .superpowers/
+.story-foundry/
+node_modules/
+dist/
+web/ui/dist/
 
 *.zip
 *.7z

@@ -1,3 +1,0 @@
-# Reviews
-
-章节审读记录放在这里。建议按 `YYYY-MM-DD-chapter-name.md` 命名，记录测试点、失败点、改动建议和回归结果。

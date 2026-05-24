@@ -31,22 +31,17 @@ story-foundry/
 └── scripts/             # 结构和维护检查
 ```
 
-每个 `works/<work-id>/` 是一个 KA。完整 KA 推荐包含：
+每个 `works/<work-id>/` 是一个 KA。具体路径以作品的 `ka.yaml` 为准。`works/song-of-blaze/` 当前使用更适合阅读的中文目录：
 
 ```text
 README.md
 ka.yaml
-state/       # 当前状态、下一步、阻塞项
-tasks/       # 可领取任务索引
-handoff/     # 跨会话交接记录
-drafts/       # 正文草稿
-canon/        # 正式设定源
-plan/         # 大纲、章节计划
-style/        # 文风规范与学习笔记
-fragments/    # 灵感碎片
-evals/        # 作品级验收标准
-reviews/      # 审读记录
-legacy/       # 旧稿和迁移前版本
+故事设定/     # 世界、角色、聚落、规则
+剧情大纲/     # 总纲、分章大纲、分幕
+正文草稿/     # 章节正文和接手说明
+审稿修订/     # 审读记录和改稿报告
+写作资料/     # 灵感片段、笔记、文风参考
+项目管理/     # 当前状态、待办任务、交接、验收、导出、旧稿
 ```
 
 ## Public Hygiene
@@ -55,6 +50,29 @@ legacy/       # 旧稿和迁移前版本
 - 不提交第三方作品全文、批量原文节选或抓取语料；只保留索引、拆解、读法和少量必要引用。
 - 不迁移旧 Lerna/package 模板、生成 zip、缓存文件和临时脚本。
 - 同人项目保持清晰标注，公开发布前单独做版权和引用检查。
+
+## WebUI
+
+本地 WebUI 用来查看作品状态、章节地图、审稿阅读器和 Codex Runner。Markdown 仓库仍是唯一事实源，`.story-foundry/` 只放可删除的本地运行缓存。
+
+```bash
+npm install
+npm run dev
+```
+
+默认地址：
+
+- WebUI：`http://127.0.0.1:5173`
+- API：`http://127.0.0.1:4789`
+
+也可以先构建，再用同一个本地后端服务静态页面：
+
+```bash
+npm run build
+npm run preview
+```
+
+`npm run preview` 默认打开 `http://127.0.0.1:4789`。
 
 ## Checks
 

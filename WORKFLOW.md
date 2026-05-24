@@ -16,19 +16,19 @@ checks:
 ## Entry
 
 1. 默认作品是 `works/song-of-blaze/`。用户明确指定其他作品时，以用户本轮指令为准。
-2. 开始任务前读取：`AGENTS.md`、本文件、目标作品 `README.md`、`ka.yaml`、`state/README.md`。
+2. 开始任务前读取：`AGENTS.md`、本文件、目标作品 `README.md`、`ka.yaml`、`ka.yaml` 中 `agent_surface.state` 指向的状态文件。
 3. 写作协作规范唯一权威来源是 `.agents/skills/novel-fiction/SKILL.md`。
 4. 按任务类型选读 `.agents/workflows/` 中的流程文件。
 
 ## Work States
 
-作品级状态记录在 `works/<work-id>/state/README.md`。任务推进时只更新与本轮有关的状态，不把灵感、设定或正文事实写进状态文件替代正式来源。
+作品级状态记录在 `ka.yaml` 的 `agent_surface.state`。任务推进时只更新与本轮有关的状态，不把灵感、设定或正文事实写进状态文件替代正式来源。
 
-可领取任务记录在 `works/<work-id>/tasks/README.md`。跨会话交接记录放在 `works/<work-id>/handoff/README.md`。
+可领取任务记录在 `agent_surface.tasks`。跨会话交接记录放在 `agent_surface.handoff`。
 
 ## Fact Sources
 
-设定判断必须回到正式资产：`canon/`、`plan/`、`drafts/`、`style/`、`fragments/` 和用户本轮明确指令。`state/` 和 `tasks/` 只说明工作状态，不是设定权威。
+设定判断必须回到 `ka.yaml.paths` 指向的正式资产。默认作品对应 `故事设定/`、`剧情大纲/`、`正文草稿/`、`写作资料/文风参考/`、`写作资料/灵感片段/` 和用户本轮明确指令。`agent_surface.state` 和 `agent_surface.tasks` 只说明工作状态，不是设定权威。
 
 ## Public Hygiene
 
