@@ -1,7 +1,6 @@
 ---
 name: novel-fiction
-description: |
-  用于小说共创、章节审读、正文润色、续写、角色卡整理、世界观核对、大纲调整、设定冲突检查、写作TDD、文风优化和跨文件同步。用户提到小说、章节、角色、世界观、大纲、润色、审读、续写、写作TDD、文风、节奏、对话、氛围、动作场景或设定一致性时使用。
+description: "Use when working on fiction writing, 小说共创, 章节审读, 正文润色, 续写, 角色卡, 世界观, 设定冲突, 故事大纲, 文风, 节奏, 对话, 氛围, 动作场景, Storygraph/Codegraph 检索, or canon consistency."
 ---
 
 # 小说共创协作规范
@@ -13,9 +12,15 @@ description: |
 每次任务都走三步：定位 -> 执行 -> 自验。
 
 1. 定位作品：默认 `works/song-of-blaze/`（《炽炎的颂歌》），仓库根目录为 `story-foundry/`。
-2. 回到项目文件确认事实，不凭记忆做设定判断。
-3. 按用户意图执行：先看就审读，直接改就编辑，改完必须自验。
-4. 复杂写作任务在“定位”和“执行”之间增加写作 TDD：先写验收条件，再判断失败点，再最小改动通过。
+2. 读取作品 `README.md`、`ka.yaml`、`ka.yaml.agent_surface.state`。
+3. 通过 `ka.yaml.paths` 定位正文、设定、大纲、文风、灵感等目录。
+4. 回到项目文件确认事实，不凭记忆做设定判断。
+5. 按用户意图执行：先看就审读，直接改就编辑，改完必须自验。
+6. 复杂写作任务在“定位”和“执行”之间增加写作 TDD：先写验收条件，再判断失败点，再最小改动通过。
+
+## 不适用场景
+
+纯工程任务不强行套本 skill：前端、API、依赖安装、Git 操作、CI、脚本开发、Gemini/OpenAI API demo 等，除非任务同时要求判断小说正文、设定、角色、文风或大纲。
 
 ## 用户意图路由
 
@@ -24,11 +29,12 @@ description: |
 | "看下"、"评价"、"有没有问题"、"你觉得"、"先看方案"、"别直接改" | 先做 Test + Red，审读和判断，不改文件 |
 | "改一下"、"优化"、"润色"、"直接改"、"帮我改" | 读必要上下文后直接编辑 |
 | "审读"、"检查"、"合理吗"、"动机够吗" | 做写作 TDD；读取 `references/review-checklist.md`，必要时读取 `references/review-perspectives.md` |
-| "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `works/<work-id>/写作资料/文风参考/README.md`，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
+| "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `ka.yaml.paths.style` 入口 README，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
 | "续写"、"新写一段"、"补场景" | 做写作 TDD；读取角色卡、相关分幕大纲、必要设定；涉及文风时同时走文风路由 |
 | "同步设定"、"角色卡整理"、"世界观核对" | 读取正式设定源，检查是否需要跨文件同步 |
 | "改名"、"统一称呼"、"术语迁移"、"检查旧名" | 读取 `references/maintenance.md`，必要时使用 `references/name-map.md` 和 `scripts/check-names.py` |
 | "插画"、"配图"、"生成图"、"画风"、"图片插入 md" | 读取 `references/illustration-generation.md`，再读取项目内现有视觉资产规范 |
+| "多 agent"、"subagent"、"idea gen"、"创意锦标赛"、"多个方案打分"、"writer room" | 读取 `.agents/skills/fiction-idea-tournament/SKILL.md`；该流程只生成和筛选方向，最终写作仍按本 skill 的事实源、TDD 和自验规则执行 |
 
 ## 写作 TDD
 
@@ -59,17 +65,23 @@ description: |
 | 任务 | 必读文件 |
 |---|---|
 | 项目进度 | `works/<work-id>/README.md` + `works/<work-id>/ka.yaml` |
-| 角色判断 | `works/song-of-blaze/故事设定/世界/树藤世界/角色/*.md` |
-| 聚落/地理 | `works/song-of-blaze/故事设定/世界/树藤世界/聚落/*.md` |
-| 本章任务 | `works/song-of-blaze/剧情大纲/分章大纲/分幕/*.md` |
-| 全书方向 | `works/song-of-blaze/剧情大纲/分章大纲/总纲.md` |
-| 文风优化/润色/续写 | `works/<work-id>/写作资料/文风参考/README.md` + `references/style-routing.md` |
+| 角色判断 | `ka.yaml.paths.canon` 下的角色卡；默认作品为 `故事设定/世界/树藤世界/角色/*.md` |
+| 聚落/地理 | `ka.yaml.paths.canon` 下的聚落/地理/世界设定 |
+| 本章任务 | `ka.yaml.paths.plan` 下的分章/分幕大纲 |
+| 全书方向 | `ka.yaml.paths.plan` 下的总纲 |
+| 文风优化/润色/续写 | `ka.yaml.paths.style` 入口 README + `references/style-routing.md` |
 | 审读输出 | `references/review-checklist.md` |
 | 质量维度 | `references/review-dimensions.md` |
 | 三重审查 | `references/review-perspectives.md` |
 | 插画生成/插入 | `references/illustration-generation.md` + 项目内视觉资产 README |
 | 编辑后自验 | `references/edit-verification.md` |
 | 低频维护 | `references/maintenance.md` |
+
+## 检索与图谱路由
+
+涉及角色、设定、世界观、章节衔接、设定冲突或跨文件同步时，先用 Storygraph/Codegraph 做候选筛选，再用 `rg`/全文搜索和原文回读做证据核验。图谱只负责初筛和导航，不负责定稿事实。
+
+详细流程见 `references/retrieval-routing.md`。
 
 ## 工具辅助路由
 
@@ -84,7 +96,7 @@ Python 工具只做辅助判断和批量处理，由 agent 按任务需要自行
 | Markdown 结构解析、标题/段落提取 | `markdown-it-py`, `python-frontmatter` |
 | 角色卡、事件表、AI 输出结构校验 | `pydantic`, `jsonschema` |
 | 章节统计、出场频率、节奏曲线 | `pandas`, `matplotlib`, `plotly` |
-| 全文搜索、轻量资料索引 | `whoosh`, `sqlite-utils` |
+| Storygraph/Codegraph 初筛、全文搜索、轻量资料索引 | `rg`, `whoosh`, `sqlite-utils` |
 | Word/投稿稿件导入导出 | `python-docx`, `pypandoc` |
 | 基础语法、正则、终端报告 | `language-tool-python`, `regex`, `rich` |
 | AI 调用、token 估算、重试和配置 | `openai`, `tiktoken`, `tenacity`, `python-dotenv`, `typer` |

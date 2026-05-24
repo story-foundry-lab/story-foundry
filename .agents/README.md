@@ -2,7 +2,7 @@
 
 `.agents/` 保存 agent 如何工作的契约，不保存作品正文或设定资产。
 
-- `skills/`: agent skills 和参考清单。
+- `skills/`: agent skills 和参考清单；写作权威入口仍是 `skills/novel-fiction/SKILL.md`，专门流程需从该入口路由。
 - `protocols/`: 仓库协议、作品生命周期和 public hygiene。
 - `workflows/`: 可执行任务流程。
 

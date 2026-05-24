@@ -11,6 +11,7 @@ story-foundry/
 ├── README.md
 ├── .agents/
 │   ├── skills/novel-fiction/SKILL.md   # 写作规范唯一权威来源
+│   ├── skills/fiction-idea-tournament/SKILL.md # 多 agent 创意锦标赛，必须继承 novel-fiction
 │   ├── protocols/                      # 仓库协议
 │   └── workflows/                      # 可执行工作流
 ├── ai/                                 # prompts、schemas、evals 等 AI 资产
@@ -27,7 +28,7 @@ story-foundry/
 
 1. 读取 `WORKFLOW.md`，确认本轮任务属于哪个 work。默认 `works/song-of-blaze/`。
 2. 读取该作品 `README.md`、`ka.yaml`、`ka.yaml` 中 `agent_surface.state` 指向的状态文件。
-3. 一切写作协作规范见 `.agents/skills/novel-fiction/SKILL.md`。
+3. 一切写作协作规范见 `.agents/skills/novel-fiction/SKILL.md`；其他写作 skill 必须从这里路由并继承其约束。
 4. 按任务类型选读 `.agents/workflows/` 中的对应流程。
 5. 不凭记忆判断设定，必须回到 `ka.yaml.paths` 指向的设定、大纲、正文、写作资料，或用户本轮明确指令。
 

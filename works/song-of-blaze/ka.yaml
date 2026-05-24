@@ -17,6 +17,7 @@ agent_surface:
     - .agents/workflows/chapter-review.md
     - .agents/workflows/canon-maintenance.md
     - .agents/workflows/illustration.md
+    - .agents/workflows/language-review.md
   state: 项目管理/当前状态/README.md
   tasks: 项目管理/待办任务/README.md
   handoff: 项目管理/交接记录/README.md
