@@ -7,6 +7,7 @@
     "dev": "concurrently -k -n api,ui -c blue,green \"node web/server/index.mjs\" \"vite --host 127.0.0.1\"",
     "dev:api": "node web/server/index.mjs",
     "build": "vite build",
+    "demo:gemini": "node scripts/gemini-api-demo.mjs",
     "preview": "node web/server/index.mjs",
     "test": "vitest run"
   },
