@@ -10,6 +10,7 @@ __pycache__/
 Thumbs.db
 .superpowers/
 .story-foundry/
+.agent_context/
 node_modules/
 dist/
 web/ui/dist/
