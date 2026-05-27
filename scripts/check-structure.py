@@ -10,7 +10,7 @@ import sys
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 WORKS_DIR = REPO_ROOT / "works"
 
-REQUIRED_ROOT_DIRS = [".agents", "ai", "works", "imports", "references", "archive", "scripts"]
+REQUIRED_ROOT_DIRS = [".agents", "ai", "works", "shared", "imports", "references", "archive", "scripts"]
 REQUIRED_ROOT_FILES = ["AGENTS.md", "WORKFLOW.md", "README.md"]
 FORBIDDEN_ROOT_DIRS = [("ai", "skills")]
 REQUIRED_AGENT_PATHS = [
@@ -24,6 +24,11 @@ REQUIRED_AGENT_PATHS = [
     ".agents/workflows/canon-maintenance.md",
     ".agents/workflows/chapter-review.md",
     ".agents/workflows/illustration.md",
+]
+REQUIRED_SHARED_PATHS = [
+    "shared/README.md",
+    "shared/角色/README.md",
+    "shared/角色/天泽近卫.md",
 ]
 REQUIRED_WORK_FILES = ["README.md", "ka.yaml"]
 REQUIRED_COMMON_WORK_DIRS = ["state", "tasks", "handoff"]
@@ -80,6 +85,10 @@ def check() -> int:
     for required_path in REQUIRED_AGENT_PATHS:
         if not (REPO_ROOT / required_path).is_file():
             issues.append(f"[MISSING] agent protocol file: {required_path}")
+
+    for required_path in REQUIRED_SHARED_PATHS:
+        if not (REPO_ROOT / required_path).is_file():
+            issues.append(f"[MISSING] shared asset file: {required_path}")
 
     if not WORKS_DIR.is_dir():
         issues.append("[MISSING] works/")
