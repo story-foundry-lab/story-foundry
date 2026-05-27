@@ -19,6 +19,7 @@ story-foundry/
 ├── works/
 │   ├── song-of-blaze/                # 默认项目：《炽炎的颂歌》
 │   └── madoka-fanfic/                # 同人孵化项目
+├── shared/                           # 跨作品共享角色和系列级事实源
 ├── imports/
 ├── references/
 ├── archive/
@@ -33,6 +34,7 @@ story-foundry/
 4. 发布相关任务（commit、push、提 PR、通过 PR）读取 `.agents/skills/publish-pr-flow/SKILL.md`。
 5. 按任务类型选读 `.agents/workflows/` 中的对应流程。
 6. 不凭记忆判断设定，必须回到 `ka.yaml.paths` 指向的设定、大纲、正文、写作资料，或用户本轮明确指令。
+7. 涉及系列共享角色时，先读 `shared/角色/`；例如天泽近卫的核心人设以 `shared/角色/天泽近卫.md` 为准。
 
 ## Public 仓库注意事项
 

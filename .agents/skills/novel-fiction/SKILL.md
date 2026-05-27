@@ -31,10 +31,13 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 | "审读"、"检查"、"合理吗"、"动机够吗" | 做写作 TDD；读取 `references/review-checklist.md`，必要时读取 `references/review-perspectives.md` |
 | "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `ka.yaml.paths.style` 入口 README，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
 | "续写"、"新写一段"、"补场景" | 做写作 TDD；读取角色卡、相关分幕大纲、必要设定；涉及文风时同时走文风路由 |
+| "初稿"、"推我一把"、"先写下去"、"关门写作"、"别审了先写" | 读取 `references/draft-mode.md`，先推动现场，不展开长篇审读 |
+| "第一幕"、"分幕重写"、"整幕重写"、"多章重写"、"监督重写" | 读取 `references/act-rewrite-supervision.md`，先列章节验收条件和跨章风险 |
+| "Claude Code"、"Codex worker"、"SeedClaw Agent"、"worker"、"子 agent 写小说"、"接管写作" | 读取 `references/external-worker.md`，把外部 agent 当候选产出源，主线程负责验收和合入 |
 | "同步设定"、"角色卡整理"、"世界观核对" | 读取正式设定源，检查是否需要跨文件同步 |
 | "改名"、"统一称呼"、"术语迁移"、"检查旧名" | 读取 `references/maintenance.md`，必要时使用 `references/name-map.md` 和 `scripts/check-names.py` |
 | "插画"、"配图"、"生成图"、"画风"、"图片插入 md" | 读取 `references/illustration-generation.md`，再读取项目内现有视觉资产规范 |
-| "多 agent"、"subagent"、"idea gen"、"创意锦标赛"、"多个方案打分"、"writer room" | 读取 `.agents/skills/fiction-idea-tournament/SKILL.md`；该流程只生成和筛选方向，最终写作仍按本 skill 的事实源、TDD 和自验规则执行 |
+| "多 agent"、"subagent"、"idea gen"、"创意锦标赛"、"多个方案打分"、"writer room" | 读取 `.agents/skills/fiction-idea-tournament/SKILL.md`；若 agent 直接产出草稿或审读报告，同时读取 `references/external-worker.md` |
 
 ## 写作 TDD
 
@@ -65,7 +68,7 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 | 任务 | 必读文件 |
 |---|---|
 | 项目进度 | `works/<work-id>/README.md` + `works/<work-id>/ka.yaml` |
-| 角色判断 | `ka.yaml.paths.canon` 下的角色卡；默认作品为 `故事设定/世界/树藤世界/角色/*.md` |
+| 角色判断 | 先查 `shared/角色/*.md` 中的系列共享角色卡，再查 `ka.yaml.paths.canon` 下的作品角色卡；默认作品为 `故事设定/世界/树藤世界/角色/*.md` |
 | 聚落/地理 | `ka.yaml.paths.canon` 下的聚落/地理/世界设定 |
 | 本章任务 | `ka.yaml.paths.plan` 下的分章/分幕大纲 |
 | 全书方向 | `ka.yaml.paths.plan` 下的总纲 |
@@ -75,6 +78,9 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 | 三重审查 | `references/review-perspectives.md` |
 | 插画生成/插入 | `references/illustration-generation.md` + 项目内视觉资产 README |
 | 编辑后自验 | `references/edit-verification.md` |
+| 初稿推动 | `references/draft-mode.md` |
+| 分幕/多章重写 | `references/act-rewrite-supervision.md` |
+| 外部写作 worker | `references/external-worker.md` |
 | 低频维护 | `references/maintenance.md` |
 
 ## 检索与图谱路由
