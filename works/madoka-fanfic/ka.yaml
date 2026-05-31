@@ -15,17 +15,25 @@ agent_surface:
   workflows:
     - .agents/workflows/fiction-editing.md
     - .agents/workflows/chapter-review.md
+    - .agents/workflows/chapter-group-planning.md
     - .agents/workflows/canon-maintenance.md
+    - .agents/workflows/interactive-rehearsal.md
   state: state/README.md
   tasks: tasks/README.md
   handoff: handoff/README.md
 paths:
   state: state
+  progress: progress
   tasks: tasks
   handoff: handoff
   drafts: drafts/chapters
   canon: canon/setting
+  lore: lore
+  plan: plan
+  chapter_groups: plan/chapter-groups
   fragments: fragments/sparks
+  interactive: interactive
+  reviews: reviews
 policy:
   fan_work: true
   third_party_full_text: do-not-commit

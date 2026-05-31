@@ -13,10 +13,24 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 
 1. 定位作品：默认 `works/song-of-blaze/`（《炽炎的颂歌》），仓库根目录为 `story-foundry/`。
 2. 读取作品 `README.md`、`ka.yaml`、`ka.yaml.agent_surface.state`。
-3. 通过 `ka.yaml.paths` 定位正文、设定、大纲、文风、灵感等目录。
+3. 通过 `ka.yaml.paths` 定位正文、设定、大纲、章节组细纲、创作进度、资料库、互动试演、文风、灵感等目录。
 4. 回到项目文件确认事实，不凭记忆做设定判断。
 5. 按用户意图执行：先看就审读，直接改就编辑，改完必须自验。
 6. 复杂写作任务在“定位”和“执行”之间增加写作 TDD：先写验收条件，再判断失败点，再最小改动通过。
+
+## 长篇层级
+
+长篇任务按层推进，不跳层：
+
+1. 创作灵感：题材、卖点、参考读法、松散片段，只能孵化方向。
+2. 长期大纲：总纲、分幕、阶段目标和重大转折，低频变化。
+3. 章节组细纲：接下来一组连续章节的短期执行方案，高频迭代。
+4. 单章草稿/定稿：章节正文和接手说明，承载实际叙事。
+5. 创作进度：已完成章节摘要、当前落点、短期衔接提示。
+6. 结构化资料库：角色、地点、势力、规则、物品等事实卡或索引。
+7. 互动试演：分支推演和角色反应实验，默认不进入正文事实。
+
+续写、补场景、重写整章前，优先检查当前章节组细纲；没有细纲或细纲明显落后于正文时，先走 `.agents/workflows/chapter-group-planning.md` 校准。互动试演只用于试桥段，合入正文前仍要回到正式设定、大纲、章节组和正文上下文验收。
 
 ## 不适用场景
 
@@ -30,7 +44,9 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 | "改一下"、"优化"、"润色"、"直接改"、"帮我改" | 读必要上下文后直接编辑 |
 | "审读"、"检查"、"合理吗"、"动机够吗" | 做写作 TDD；读取 `references/review-checklist.md`，必要时读取 `references/review-perspectives.md` |
 | "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `ka.yaml.paths.style` 入口 README，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
-| "续写"、"新写一段"、"补场景" | 做写作 TDD；读取角色卡、相关分幕大纲、必要设定；涉及文风时同时走文风路由 |
+| "续写"、"新写一段"、"补场景" | 做写作 TDD；先读当前章节组细纲、最近正文、角色卡、必要设定；涉及文风时同时走文风路由 |
+| "接下来几章"、"章节组"、"细纲"、"短期计划"、"按当前进度拆分" | 读取 `.agents/workflows/chapter-group-planning.md`，只规划接下来一组章节 |
+| "互动试演"、"跑一下剧情"、"试角色反应"、"分支推演"、"如果主角这么做" | 读取 `.agents/workflows/interactive-rehearsal.md`；只产出试演记录，不直接改正文事实 |
 | "初稿"、"推我一把"、"先写下去"、"关门写作"、"别审了先写" | 读取 `references/draft-mode.md`，先推动现场，不展开长篇审读 |
 | "第一幕"、"分幕重写"、"整幕重写"、"多章重写"、"监督重写" | 读取 `references/act-rewrite-supervision.md`，先列章节验收条件和跨章风险 |
 | "Claude Code"、"Codex worker"、"SeedClaw Agent"、"worker"、"子 agent 写小说"、"接管写作" | 读取 `references/external-worker.md`，把外部 agent 当候选产出源，主线程负责验收和合入 |
@@ -67,11 +83,14 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 
 | 任务 | 必读文件 |
 |---|---|
-| 项目进度 | `works/<work-id>/README.md` + `works/<work-id>/ka.yaml` |
+| 项目进度 | `works/<work-id>/README.md` + `works/<work-id>/ka.yaml` + `ka.yaml.paths.progress` |
 | 角色判断 | 先查 `shared/角色/*.md` 中的系列共享角色卡，再查 `ka.yaml.paths.canon` 下的作品角色卡；默认作品为 `故事设定/世界/树藤世界/角色/*.md` |
 | 聚落/地理 | `ka.yaml.paths.canon` 下的聚落/地理/世界设定 |
-| 本章任务 | `ka.yaml.paths.plan` 下的分章/分幕大纲 |
+| 本章任务 | 先查 `ka.yaml.paths.chapter_groups` 下当前章节组细纲，再查 `ka.yaml.paths.plan` 下的分章/分幕大纲 |
 | 全书方向 | `ka.yaml.paths.plan` 下的总纲 |
+| 章节组规划 | `ka.yaml.paths.progress` + 最近 2 章正文 + 最近 1-2 个章节组细纲 + `ka.yaml.paths.plan` |
+| 结构化资料 | `ka.yaml.paths.lore`，但正式事实仍回到 `ka.yaml.paths.canon` |
+| 互动试演 | `ka.yaml.paths.interactive`，试演结论要合入正式文件后才生效 |
 | 文风优化/润色/续写 | `ka.yaml.paths.style` 入口 README + `references/style-routing.md` |
 | 审读输出 | `references/review-checklist.md` |
 | 质量维度 | `references/review-dimensions.md` |
@@ -111,14 +130,17 @@ Python 工具只做辅助判断和批量处理，由 agent 按任务需要自行
 
 ## 设定优先级
 
-角色卡 > 聚落/专项设定 > 分幕大纲 > 总纲 > 灵感片段。
+角色卡 > 聚落/专项设定 > 已定稿正文 > 当前章节组细纲 > 分幕大纲 > 总纲 > 创作进度 > 灵感片段。
 
 用户本轮明确纠正 > 以上所有。角色卡和正文冲突时，先指出冲突，再给修法。角色卡缺失时保守判断，不硬编。
+
+`agent_surface.state`、`agent_surface.tasks`、`agent_surface.handoff` 只记录协作现场，不参与设定优先级。`paths.progress` 只记录已发生内容和短期衔接，不替代角色卡、设定或大纲。
 
 ## 写作硬规则
 
 - 默认第三人称有限视角。感知贴住当前人物，先写体感、动作、声音、气味、距离和阻力，不替人物解释世界。
 - 所有世界观判断回项目文件。检查明确设定来源、是否违反已有规则、是否偷跑后文、是否和角色卡或大纲打架。
+- 正文推进遵循“长期大纲 -> 当前章节组细纲 -> 最近正文 -> 单章落笔”。没有章节组细纲时，不硬凭总纲写多章。
 - 语言自然度优先。优化重复词时，不为了减少"她/露维/光"制造被动腔、翻译腔或不自然倒装。
 - 同一轮协作中，用户明确否定的表达、设定、动作细节，后续编辑必须避开。
 - 普通句子润色不做跨文件扩散。只有修改角色习惯、世界规则、称呼体系、关键动机时，才检查正文、角色卡、大纲是否需要同步。

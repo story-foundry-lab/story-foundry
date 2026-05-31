@@ -15,7 +15,9 @@ agent_surface:
   workflows:
     - .agents/workflows/fiction-editing.md
     - .agents/workflows/chapter-review.md
+    - .agents/workflows/chapter-group-planning.md
     - .agents/workflows/canon-maintenance.md
+    - .agents/workflows/interactive-rehearsal.md
     - .agents/workflows/illustration.md
     - .agents/workflows/language-review.md
   state: 项目管理/当前状态/README.md
@@ -23,13 +25,17 @@ agent_surface:
   handoff: 项目管理/交接记录/README.md
 paths:
   state: 项目管理/当前状态
+  progress: 项目管理/创作进度
   tasks: 项目管理/待办任务
   handoff: 项目管理/交接记录
   drafts: 正文草稿/章节
   canon: 故事设定/世界
+  lore: 故事设定/资料库
   plan: 剧情大纲/分章大纲
+  chapter_groups: 剧情大纲/分章大纲/章节组
   style: 写作资料/文风参考
   fragments: 写作资料/灵感片段
+  interactive: 写作资料/互动试演
   reviews: 审稿修订
   notes: 写作资料/笔记
   evals: 项目管理/质量验收

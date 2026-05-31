@@ -8,8 +8,13 @@
 |---|---|
 | 正文草稿 | `drafts/chapters/` |
 | 设定 | `canon/setting/` |
+| 结构化资料库 | `lore/` |
+| 长期大纲 | `plan/` |
+| 章节组细纲 | `plan/chapter-groups/` |
 | 灵感碎片 | `fragments/sparks/` |
+| 互动试演 | `interactive/` |
 | 当前状态 | `state/README.md` |
+| 创作进度 | `progress/README.md` |
 | 任务索引 | `tasks/README.md` |
 | 跨会话交接 | `handoff/README.md` |
 

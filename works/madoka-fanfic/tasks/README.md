@@ -5,6 +5,7 @@
 ## Open
 
 - 整理 `fragments/sparks/` 中可发展为大纲的素材。
+- 建立 `plan/` 下的长期大纲入口，再决定是否创建第一组章节组细纲。
 - 审读 `drafts/chapters/chapter-1.md` 与当前设定是否一致。
 - 公开发布前做版权和引用检查。
 

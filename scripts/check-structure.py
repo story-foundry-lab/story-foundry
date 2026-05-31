@@ -18,11 +18,14 @@ REQUIRED_AGENT_PATHS = [
     ".agents/skills/novel-fiction/references/name-map.md",
     ".agents/protocols/repository.md",
     ".agents/protocols/work-lifecycle.md",
+    ".agents/protocols/cross-repo-sync.md",
     ".agents/protocols/public-hygiene.md",
     ".agents/protocols/fiction-ka.md",
     ".agents/workflows/fiction-editing.md",
     ".agents/workflows/canon-maintenance.md",
     ".agents/workflows/chapter-review.md",
+    ".agents/workflows/chapter-group-planning.md",
+    ".agents/workflows/interactive-rehearsal.md",
     ".agents/workflows/illustration.md",
 ]
 REQUIRED_SHARED_PATHS = [
@@ -35,13 +38,22 @@ REQUIRED_COMMON_WORK_DIRS = ["state", "tasks", "handoff"]
 REQUIRED_COMMON_WORK_READMES = {
     "song-of-blaze": [
         "项目管理/当前状态/README.md",
+        "项目管理/创作进度/README.md",
         "项目管理/待办任务/README.md",
         "项目管理/交接记录/README.md",
+        "剧情大纲/分章大纲/章节组/README.md",
+        "故事设定/资料库/README.md",
+        "写作资料/互动试演/README.md",
     ],
     "madoka-fanfic": [
         "state/README.md",
+        "progress/README.md",
         "tasks/README.md",
         "handoff/README.md",
+        "plan/README.md",
+        "plan/chapter-groups/README.md",
+        "lore/README.md",
+        "interactive/README.md",
     ],
 }
 REQUIRED_WORK_DIRS = {
@@ -53,7 +65,20 @@ REQUIRED_WORK_DIRS = {
         "写作资料",
         "项目管理",
     ],
-    "madoka-fanfic": ["state", "tasks", "handoff", "drafts", "canon", "fragments", "evals", "reviews"],
+    "madoka-fanfic": [
+        "state",
+        "progress",
+        "tasks",
+        "handoff",
+        "drafts",
+        "canon",
+        "lore",
+        "plan",
+        "interactive",
+        "fragments",
+        "evals",
+        "reviews",
+    ],
 }
 FORBIDDEN_NAMES = {".DS_Store", "Thumbs.db"}
 FORBIDDEN_SUFFIXES = {".zip", ".7z", ".rar"}

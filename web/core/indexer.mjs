@@ -7,12 +7,16 @@ const TEXT_EXTENSIONS = new Set([".md", ".markdown"]);
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
 const DEFAULT_WORK_PATHS = {
   state: "state",
+  progress: "progress",
   tasks: "tasks",
   handoff: "handoff",
   drafts: "drafts/chapters",
   canon: "canon/worlds",
+  lore: "lore",
   plan: "plan/outline",
+  chapter_groups: "plan/chapter-groups",
   style: "style/writing-style",
+  interactive: "interactive",
   reviews: "reviews"
 };
 
@@ -33,13 +37,21 @@ export async function buildProjectIndex({ repoRoot = process.cwd(), workId } = {
   const workRoot = path.join(root, work.path);
   const readmePath = `${work.path}/README.md`;
   const statePath = workFilePath(work, "state", "README.md");
+  const progressPath = workFilePath(work, "progress", "README.md");
   const tasksPath = workFilePath(work, "tasks", "README.md");
   const handoffPath = workFilePath(work, "handoff", "README.md");
-  const [readme, state, tasks, handoff, chapters, reviews, coverImage] = await Promise.all([
+  const chapterGroupsPath = workFilePath(work, "chapter_groups", "README.md");
+  const lorePath = workFilePath(work, "lore", "README.md");
+  const interactivePath = workFilePath(work, "interactive", "README.md");
+  const [readme, state, progressText, tasks, handoff, chapterGroups, lore, interactive, chapters, reviews, coverImage] = await Promise.all([
     readText(path.join(root, readmePath)),
     readText(path.join(root, statePath)),
+    readText(path.join(root, progressPath)),
     readText(path.join(root, tasksPath)),
     readText(path.join(root, handoffPath)),
+    readText(path.join(root, chapterGroupsPath)),
+    readText(path.join(root, lorePath)),
+    readText(path.join(root, interactivePath)),
     buildChapters({ root, workRoot, workPath: work.path, work }),
     buildReviews({ root, workRoot, work }),
     findCoverImage({ workRoot, work })
@@ -53,13 +65,24 @@ export async function buildProjectIndex({ repoRoot = process.cwd(), workId } = {
       ...work,
       readmePath,
       statePath,
+      progressPath,
       tasksPath,
-      handoffPath
+      handoffPath,
+      chapterGroupsPath,
+      lorePath,
+      interactivePath
     },
     dashboard: {
       current: sectionItems(state, "Current"),
       next: sectionItems(state, "Next"),
       blockers: sectionItems(state, "Blockers"),
+      creative: {
+        progressCurrent: sectionItems(progressText, "Current"),
+        shortTermContinuity: sectionItems(progressText, "Short-Term Continuity"),
+        chapterGroupCurrent: sectionItems(chapterGroups, "Current"),
+        loreSummary: firstParagraph(lore),
+        interactiveSummary: firstParagraph(interactive)
+      },
       openTasks: sectionItems(tasks, "Open"),
       handoff: latestHandoffItems(handoff),
       readmeSummary: firstParagraph(readme),
@@ -125,6 +148,7 @@ async function readWorkflow(root) {
 async function buildChapters({ root, workRoot, workPath, work }) {
   const draftsRoot = path.join(workRoot, workSubpath(work, "drafts"));
   const outlineRoot = path.join(workRoot, workSubpath(work, "plan"));
+  const chapterGroupsRoot = path.join(workRoot, workSubpath(work, "chapter_groups"));
   const reviewRefs = await buildSourceCatalog({ root, workRoot, workPath, work });
   const entries = new Map();
 
@@ -148,6 +172,7 @@ async function buildChapters({ root, workRoot, workPath, work }) {
 
   for (const file of await walkFiles(outlineRoot)) {
     if (!TEXT_EXTENSIONS.has(path.extname(file))) continue;
+    if (isInsideOrSame(file, chapterGroupsRoot)) continue;
     const number = chapterNumberFromOutline(file);
     if (number === undefined) continue;
     const entry = ensureChapter(entries, number);
@@ -207,15 +232,19 @@ async function buildReviews({ root, workRoot, work }) {
 async function buildSourceCatalog({ root, workRoot, workPath, work }) {
   const sources = [];
   const styleEntryPath = normalizePath(path.join(workPath, workSubpath(work, "style"), "README.md"));
+  const chapterGroupsRoot = path.join(workRoot, workSubpath(work, "chapter_groups"));
   const sourceRoots = [
     ["canon", path.join(workRoot, workSubpath(work, "canon"))],
+    ["lore", path.join(workRoot, workSubpath(work, "lore"))],
     ["style", path.join(workRoot, workSubpath(work, "style"))],
+    ["chapter_group", path.join(workRoot, workSubpath(work, "chapter_groups"))],
     ["plan", path.join(workRoot, workSubpath(work, "plan"))]
   ];
 
   for (const [type, sourceRoot] of sourceRoots) {
     for (const file of await walkFiles(sourceRoot)) {
       if (!TEXT_EXTENSIONS.has(path.extname(file))) continue;
+      if (type === "plan" && isInsideOrSame(file, chapterGroupsRoot)) continue;
       const base = stripExtension(path.basename(file));
       const names = sourceNames(base);
       const relativePath = rel(root, file);
@@ -490,4 +519,9 @@ function rel(root, file) {
 
 function normalizePath(value) {
   return value.split(path.sep).join("/");
+}
+
+function isInsideOrSame(file, dir) {
+  const relative = path.relative(dir, file);
+  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }

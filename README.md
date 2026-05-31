@@ -1,6 +1,6 @@
 # Story Foundry
 
-故事铸造所。这里是公开的小说项目工作仓库，用来维护可持续推进的作品、设定、正文草稿、审读规范和 AI 辅助写作流程。
+故事铸造所。这里是公开的小说项目工作仓库，用来维护可持续推进的作品、设定、长期大纲、章节组细纲、正文草稿、创作进度、审读规范和 AI 辅助写作流程。
 
 ## Works
 
@@ -38,14 +38,28 @@ story-foundry/
 README.md
 ka.yaml
 故事设定/     # 世界、角色、聚落、规则
-剧情大纲/     # 总纲、分章大纲、分幕
+剧情大纲/     # 总纲、分章大纲、分幕、章节组细纲
 正文草稿/     # 章节正文和接手说明
 审稿修订/     # 审读记录和改稿报告
-写作资料/     # 灵感片段、笔记、文风参考
-项目管理/     # 当前状态、待办任务、交接、验收、导出、旧稿
+写作资料/     # 灵感片段、笔记、文风参考、互动试演
+项目管理/     # 当前状态、创作进度、待办任务、交接、验收、导出、旧稿
 ```
 
 `shared/` 保存跨作品共享资产。当前 `shared/角色/天泽近卫.md` 是系列主角的共享角色卡；作品内可以补充当期表现，但核心人设、能力边界和成长方向以共享角色卡为准。
+
+通用 agent 基建与私有写作仓库同步规则见 `.agents/protocols/cross-repo-sync.md`。涉及 workflow、protocol、检查脚本、写作 skill 通用层的改动时，需要评估是否同步到 `/Users/bytedance/Documents/code/js/private-story-foundry`。
+
+## Writing Layers
+
+Story Foundry 的长篇写作默认按层推进：
+
+1. 创作灵感：松散想法和参考读法。
+2. 长期大纲：全书结构、分幕和阶段目标。
+3. 章节组细纲：接下来一组章节的短期执行计划。
+4. 单章草稿/定稿：实际正文和接手说明。
+5. 创作进度：已发生内容、当前落点和短期衔接提示。
+6. 结构化资料库：角色、地点、势力、规则、物品等事实卡或索引。
+7. 互动试演：剧情分支和角色反应实验，默认不进入正史。
 
 ## Public Hygiene
 
@@ -83,4 +97,5 @@ npm run preview
 python scripts/check-structure.py
 python scripts/check-names.py --work song-of-blaze
 rg -n 'ai[/\\]skills' -S .
+npm test -- web/tests/indexer.test.mjs web/tests/runner.test.mjs
 ```

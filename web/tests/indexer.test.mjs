@@ -13,8 +13,14 @@ describe("project-indexer", () => {
     expect(index.work.id).toBe("song-of-blaze");
     expect(index.work.title).toBe("炽炎的颂歌");
     expect(index.work.stage).toBe("drafting");
+    expect(index.work.progressPath).toBe("works/song-of-blaze/项目管理/创作进度/README.md");
+    expect(index.work.chapterGroupsPath).toBe("works/song-of-blaze/剧情大纲/分章大纲/章节组/README.md");
+    expect(index.work.lorePath).toBe("works/song-of-blaze/故事设定/资料库/README.md");
+    expect(index.work.interactivePath).toBe("works/song-of-blaze/写作资料/互动试演/README.md");
     expect(index.dashboard.openTasks).toContain("创建并推进 `正文草稿/章节/chapter-3.md`。");
     expect(index.dashboard.blockers).toContain("第二幕到第五幕总纲已定，分幕仍待细化。");
+    expect(index.dashboard.creative.progressCurrent).toContain("当前阶段：第一幕“根域相遇”正文推进中。");
+    expect(index.dashboard.creative.chapterGroupCurrent).toContain("当前待规划单元：第一幕“根域相遇”中第三章及其后续承接。");
   });
 
   test("connects draft chapters, handoff notes, and outline files", async () => {
