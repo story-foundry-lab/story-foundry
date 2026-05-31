@@ -146,8 +146,12 @@ export async function createReviewContext({ index, chapter, mode = "chapter-revi
     index.work.readmePath,
     index.work.kaPath,
     index.work.statePath,
+    index.work.progressPath,
     index.work.tasksPath,
     index.work.handoffPath,
+    index.work.chapterGroupsPath,
+    index.work.lorePath,
+    index.work.interactivePath,
     chapter.draftPath,
     chapter.handoffPath,
     chapter.outlinePath,
@@ -206,8 +210,12 @@ export async function createEditContext({ index, chapter, reviewRun, acceptedFin
     `- ${index.work.readmePath}`,
     `- ${index.work.kaPath}`,
     `- ${index.work.statePath}`,
+    `- ${index.work.progressPath}`,
     `- ${index.work.tasksPath}`,
-    `- ${index.work.handoffPath}`
+    `- ${index.work.handoffPath}`,
+    `- ${index.work.chapterGroupsPath}`,
+    `- ${index.work.lorePath}`,
+    `- ${index.work.interactivePath}`
   ].join("\n");
 }
 
