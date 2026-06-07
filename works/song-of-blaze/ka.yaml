@@ -13,12 +13,8 @@ source:
 agent_surface:
   skill: .agents/skills/novel-fiction/SKILL.md
   workflows:
-    - .agents/workflows/fiction-editing.md
-    - .agents/workflows/chapter-review.md
     - .agents/workflows/chapter-group-planning.md
-    - .agents/workflows/canon-maintenance.md
     - .agents/workflows/interactive-rehearsal.md
-    - .agents/workflows/illustration.md
     - .agents/workflows/language-review.md
   state: 项目管理/当前状态/README.md
   tasks: 项目管理/待办任务/README.md
@@ -36,10 +32,7 @@ paths:
   style: 写作资料/文风参考
   fragments: 写作资料/灵感片段
   interactive: 写作资料/互动试演
-  reviews: 审稿修订
   notes: 写作资料/笔记
-  evals: 项目管理/质量验收
-  exports: 项目管理/导出稿件
   legacy: 项目管理/旧稿存档/tieba-original
 policy:
   third_party_full_text: do-not-commit

@@ -1,6 +1,5 @@
 .env
 .env.*
-!.env.example
 
 __pycache__/
 *.pyc
@@ -13,7 +12,6 @@ Thumbs.db
 .agent_context/
 node_modules/
 dist/
-web/ui/dist/
 
 *.zip
 *.7z

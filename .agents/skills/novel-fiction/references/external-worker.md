@@ -26,7 +26,7 @@
    - 初稿推动：`references/draft-mode.md`。
    - 分幕或多章重写：`references/act-rewrite-supervision.md`。
    - 合入前自验：`references/edit-verification.md`。
-   - 审读报告：`references/review-checklist.md`。
+   - 审读报告：`references/review.md`。
    - 文风任务：`references/style-routing.md`。
 4. 指定需要读取的章纲、上一章、目标章、角色卡或设定文件。
 5. 明确输出路径、输出格式和禁止修改的正式文件。

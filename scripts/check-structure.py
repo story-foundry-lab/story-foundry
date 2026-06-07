@@ -10,23 +10,17 @@ import sys
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 WORKS_DIR = REPO_ROOT / "works"
 
-REQUIRED_ROOT_DIRS = [".agents", "ai", "works", "shared", "imports", "references", "archive", "scripts"]
+REQUIRED_ROOT_DIRS = [".agents", "ai", "works", "shared", "scripts"]
 REQUIRED_ROOT_FILES = ["AGENTS.md", "WORKFLOW.md", "README.md"]
 FORBIDDEN_ROOT_DIRS = [("ai", "skills")]
 REQUIRED_AGENT_PATHS = [
     ".agents/skills/novel-fiction/SKILL.md",
     ".agents/skills/novel-fiction/references/name-map.md",
     ".agents/protocols/repository.md",
-    ".agents/protocols/work-lifecycle.md",
     ".agents/protocols/cross-repo-sync.md",
-    ".agents/protocols/public-hygiene.md",
-    ".agents/protocols/fiction-ka.md",
-    ".agents/workflows/fiction-editing.md",
-    ".agents/workflows/canon-maintenance.md",
-    ".agents/workflows/chapter-review.md",
     ".agents/workflows/chapter-group-planning.md",
     ".agents/workflows/interactive-rehearsal.md",
-    ".agents/workflows/illustration.md",
+    ".agents/workflows/language-review.md",
 ]
 REQUIRED_SHARED_PATHS = [
     "shared/README.md",
@@ -61,7 +55,6 @@ REQUIRED_WORK_DIRS = {
         "故事设定",
         "剧情大纲",
         "正文草稿",
-        "审稿修订",
         "写作资料",
         "项目管理",
     ],
@@ -76,8 +69,6 @@ REQUIRED_WORK_DIRS = {
         "plan",
         "interactive",
         "fragments",
-        "evals",
-        "reviews",
     ],
 }
 FORBIDDEN_NAMES = {".DS_Store", "Thumbs.db"}

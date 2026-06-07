@@ -18,17 +18,14 @@ story-foundry/
 ├── README.md
 ├── .agents/            # agent 操作规程
 │   ├── skills/         # agent skills，写作协作规范唯一权威来源
-│   ├── protocols/      # 仓库协议、作品生命周期、public hygiene
-│   └── workflows/      # 章节审读、正文编辑、设定维护等可执行流程
+│   ├── protocols/      # 仓库协议（repository + cross-repo-sync）
+│   └── workflows/      # 章节组规划、互动试演、语言审读等可执行流程
 ├── ai/
 │   ├── prompts/         # 可复用提示词
 │   ├── schemas/         # KA 元数据 schema
 │   └── evals/           # 跨作品评估方法
 ├── works/               # 可独立推进的作品
 ├── shared/              # 跨作品共享角色、术语和系列级事实源
-├── imports/             # 外部导入稿索引，不直接当正式设定
-├── references/          # 可公开的参考资料与索引
-├── archive/             # 暂不维护项目
 └── scripts/             # 结构和维护检查
 ```
 
@@ -40,9 +37,8 @@ ka.yaml
 故事设定/     # 世界、角色、聚落、规则
 剧情大纲/     # 总纲、分章大纲、分幕、章节组细纲
 正文草稿/     # 章节正文和接手说明
-审稿修订/     # 审读记录和改稿报告
 写作资料/     # 灵感片段、笔记、文风参考、互动试演
-项目管理/     # 当前状态、创作进度、待办任务、交接、验收、导出、旧稿
+项目管理/     # 当前状态、创作进度、待办任务、交接、旧稿
 ```
 
 `shared/` 保存跨作品共享资产。当前 `shared/角色/天泽近卫.md` 是系列主角的共享角色卡；作品内可以补充当期表现，但核心人设、能力边界和成长方向以共享角色卡为准。
@@ -70,26 +66,7 @@ Story Foundry 的长篇写作默认按层推进：
 
 ## WebUI
 
-本地 WebUI 用来查看作品状态、章节地图、审稿阅读器和 Codex Runner。Markdown 仓库仍是唯一事实源，`.story-foundry/` 只放可删除的本地运行缓存。
-
-```bash
-npm install
-npm run dev
-```
-
-默认地址：
-
-- WebUI：`http://127.0.0.1:5173`
-- API：`http://127.0.0.1:4789`
-
-也可以先构建，再用同一个本地后端服务静态页面：
-
-```bash
-npm run build
-npm run preview
-```
-
-`npm run preview` 默认打开 `http://127.0.0.1:4789`。
+本地 WebUI（查看作品状态、章节地图、审稿阅读器和 Codex Runner）已拆分到独立仓库 `story-foundry-webui`。它通过环境变量 `STORY_FOUNDRY_ROOT` 指向本仓库读取内容，Markdown 仓库仍是唯一事实源。启动方式见该仓库的 README。
 
 ## Checks
 
@@ -97,5 +74,4 @@ npm run preview
 python scripts/check-structure.py
 python scripts/check-names.py --work song-of-blaze
 rg -n 'ai[/\\]skills' -S .
-npm test -- web/tests/indexer.test.mjs web/tests/runner.test.mjs
 ```

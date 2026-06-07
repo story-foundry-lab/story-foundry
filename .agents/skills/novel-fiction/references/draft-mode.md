@@ -41,4 +41,4 @@
 - 用户要方向：给短选项，不写长分析。
 - 用户要续写：直接给可接上的段落。
 - 用户要被推动：给一个小阻力和一个行动入口。
-- 用户要停下来审：再切回 `review-checklist.md` 或 `edit-verification.md`。
+- 用户要停下来审：再切回 `review.md` 或 `edit-verification.md`。

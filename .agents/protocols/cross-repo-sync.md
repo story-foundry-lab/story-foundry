@@ -18,7 +18,6 @@
 - `.agents/skills/novel-fiction/SKILL.md` 中的通用写作层级、事实源路由和自验规则。
 - `WORKFLOW.md` 中的通用入口、层级和完成定义。
 - `scripts/check-structure.py`、`scripts/check-names.py` 中的通用结构约束。
-- WebUI / runner 的通用索引逻辑；如果 private 没有对应 WebUI，则只同步文档和结构，不强行引入前端。
 
 默认不同步：
 
@@ -45,7 +44,6 @@ cd /Users/bytedance/Documents/code/js/story-foundry
 python3 scripts/check-structure.py
 python3 scripts/check-names.py --work song-of-blaze
 rg -n 'ai[/\\]skills' -S .
-npm test -- web/tests/indexer.test.mjs web/tests/runner.test.mjs
 ```
 
 Private repo:

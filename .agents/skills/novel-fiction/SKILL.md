@@ -42,7 +42,7 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 |---|---|
 | "看下"、"评价"、"有没有问题"、"你觉得"、"先看方案"、"别直接改" | 先做 Test + Red，审读和判断，不改文件 |
 | "改一下"、"优化"、"润色"、"直接改"、"帮我改" | 读必要上下文后直接编辑 |
-| "审读"、"检查"、"合理吗"、"动机够吗" | 做写作 TDD；读取 `references/review-checklist.md`，必要时读取 `references/review-perspectives.md` |
+| "审读"、"检查"、"合理吗"、"动机够吗" | 做写作 TDD；读取 `references/review.md`，含审读维度、报告格式和多视角审查 |
 | "文风"、"语言"、"节奏"、"对话"、"氛围"、"动作场景"、"生硬" | 读取 `ka.yaml.paths.style` 入口 README，再按 `references/style-routing.md` 选读 1-2 个文风文件 |
 | "续写"、"新写一段"、"补场景" | 做写作 TDD；先读当前章节组细纲、最近正文、角色卡、必要设定；涉及文风时同时走文风路由 |
 | "接下来几章"、"章节组"、"细纲"、"短期计划"、"按当前进度拆分" | 读取 `.agents/workflows/chapter-group-planning.md`，只规划接下来一组章节 |
@@ -92,9 +92,9 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 | 结构化资料 | `ka.yaml.paths.lore`，但正式事实仍回到 `ka.yaml.paths.canon` |
 | 互动试演 | `ka.yaml.paths.interactive`，试演结论要合入正式文件后才生效 |
 | 文风优化/润色/续写 | `ka.yaml.paths.style` 入口 README + `references/style-routing.md` |
-| 审读输出 | `references/review-checklist.md` |
-| 质量维度 | `references/review-dimensions.md` |
-| 三重审查 | `references/review-perspectives.md` |
+| 审读输出 | `references/review.md` |
+| 质量维度 | `references/review.md` |
+| 多视角审查 | `references/review.md` |
 | 插画生成/插入 | `references/illustration-generation.md` + 项目内视觉资产 README |
 | 编辑后自验 | `references/edit-verification.md` |
 | 初稿推动 | `references/draft-mode.md` |
@@ -104,9 +104,12 @@ description: "Use when working on fiction writing, 小说共创, 章节审读, �
 
 ## 检索与图谱路由
 
-涉及角色、设定、世界观、章节衔接、设定冲突或跨文件同步时，先用 Storygraph/Codegraph 做候选筛选，再用 `rg`/全文搜索和原文回读做证据核验。图谱只负责初筛和导航，不负责定稿事实。
+涉及角色、设定、世界观、章节衔接、设定冲突或跨文件同步时，先用检索做候选筛选，再用原文回读做证据核验。检索只负责初筛和导航，不负责定稿事实。
 
-详细流程见 `references/retrieval-routing.md`。
+1. 用关键词找候选文件：`rg -n "<关键词>" works/<work-id>`。
+2. 读取候选文件的相关段落。
+3. 回到 `ka.yaml.paths` 确认该文件是否属于正式事实源。
+4. 依据来源标注强弱：角色卡和专项设定可作强依据；大纲只定方向，不覆盖角色卡；灵感片段和旧稿只作候选与历史参考。
 
 ## 工具辅助路由
 
@@ -150,7 +153,7 @@ Python 工具只做辅助判断和批量处理，由 agent 按任务需要自行
 完成后按任务类型自验：
 
 - 正文编辑、润色、续写：读取 `references/edit-verification.md`，回读改动段前后至少 3-5 段。
-- 审读：按 `references/review-checklist.md` 覆盖硬伤、人物、叙事、语言、结构、一致性。
+- 审读：按 `references/review.md` 覆盖硬伤、人物、叙事、语言、结构、一致性。
 - 名称迁移：仅在大规模改名、称呼统一、术语迁移或用户明确要求时，按 `references/maintenance.md` 运行检查。
 - 用户明确说"跳过检查"时，可以跳过对应检查。
 

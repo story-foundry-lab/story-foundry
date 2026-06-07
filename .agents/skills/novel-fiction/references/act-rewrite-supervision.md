@@ -37,7 +37,7 @@
 3. 给每章写 3-5 条验收条件。
 4. 逐章处理：先补任务、阻力和物件变化，再做语言整理。
 5. 每章完成后回读前后章衔接。
-6. 整幕完成后按 `review-dimensions.md`、`review-perspectives.md` 和 `edit-verification.md` 自验。
+6. 整幕完成后按 `review.md` 和 `edit-verification.md` 自验。
 
 ## Worker 监督
 

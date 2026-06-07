@@ -13,10 +13,7 @@ source:
 agent_surface:
   skill: .agents/skills/novel-fiction/SKILL.md
   workflows:
-    - .agents/workflows/fiction-editing.md
-    - .agents/workflows/chapter-review.md
     - .agents/workflows/chapter-group-planning.md
-    - .agents/workflows/canon-maintenance.md
     - .agents/workflows/interactive-rehearsal.md
   state: state/README.md
   tasks: tasks/README.md
@@ -33,7 +30,6 @@ paths:
   chapter_groups: plan/chapter-groups
   fragments: fragments/sparks
   interactive: interactive
-  reviews: reviews
 policy:
   fan_work: true
   third_party_full_text: do-not-commit
